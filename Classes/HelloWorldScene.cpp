@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
@@ -101,10 +101,17 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	Sprite* sprite = Sprite::create("inu.png");
+	sprite = Sprite::create("inu.png");
 	this->addChild(sprite);
 
+	sprite->setPosition(Vec2(640.0f, 320.0f));
+	//sprite->setRotation(90.0f);
+	//sprite->setVisible(false);
+	sprite->setColor(Color3B(255, 255, 255));
+	//sprite->setOpacity(255);
 
+	// update関数を有効にする
+	this->scheduleUpdate();
 
     return true;
 }
@@ -121,4 +128,16 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
+}
+
+void HelloWorld::update(float delta)
+{
+	// 今の座標を取得
+	Vec2 pos = sprite->getPosition();
+	// 座標をずらす
+	//pos += Vec2(1.0f, 1.0f);
+	pos.x += 1.0f;
+	pos.y += 1.0f;
+	// 新たな座標をセット
+	sprite->setPosition(pos);
 }
