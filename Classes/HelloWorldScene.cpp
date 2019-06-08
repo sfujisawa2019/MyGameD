@@ -109,10 +109,12 @@ bool HelloWorld::init()
 	//sprite->setVisible(false);
 	sprite->setColor(Color3B(255, 255, 255));
 	sprite->setScale(0.5f);
-	//sprite->setOpacity(255);
+	sprite->setOpacity(255);
 
 	// update関数を有効にする
 	this->scheduleUpdate();
+
+	counter = 0;
 
     return true;
 }
@@ -136,9 +138,20 @@ void HelloWorld::update(float delta)
 	// 今の座標を取得
 	Vec2 pos = sprite->getPosition();
 	// 座標をずらす
-	pos += Vec2(-5.0f, 0.0f);
+	pos += Vec2(-1.0f, 0.0f);
 	//pos.x -= 5.0f;
 	//pos.y += 1.0f;
 	// 新たな座標をセット
 	sprite->setPosition(pos);
+	// 5秒で255に
+	// 300frmで255
+
+	counter++;
+	if (counter > 300)
+	{
+		counter = 300;
+	}
+	float opacity = counter / 300.0f * 255.0f;
+	opacity = 255.0f - opacity;
+	sprite->setOpacity(opacity);
 }
