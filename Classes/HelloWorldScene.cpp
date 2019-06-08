@@ -116,6 +116,9 @@ bool HelloWorld::init()
 
 	counter = 0;
 
+	// 左移動から始まる
+	state = 0;
+
     return true;
 }
 
@@ -135,23 +138,52 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	// 今の座標を取得
-	Vec2 pos = sprite->getPosition();
-	// 座標をずらす
-	pos += Vec2(-1.0f, 0.0f);
-	//pos.x -= 5.0f;
-	//pos.y += 1.0f;
-	// 新たな座標をセット
-	sprite->setPosition(pos);
+	Vec2 pos;
+	switch (state)
+	{
+	// 左移動
+	case 0:
+		pos = sprite->getPosition();
+		pos += Vec2(-5.0f, 0.0f);
+		sprite->setPosition(pos);
+		// 左端に達したら
+		if (pos.x <= 100)
+		{
+			state = 1; // 下移動に切り替える
+		}
+		break;
+	// 下移動
+	case 1:
+		pos = sprite->getPosition();
+		pos += Vec2(0.0f, -5.0f);
+		sprite->setPosition(pos);
+		// 下端に達したら
+		if (pos.y <= 100)
+		{
+			state = 2; // 右移動に切り替える
+		}
+		break;
+	// 右移動
+	case 2:
+		break;
+	// 上移動
+	case 3:
+	default:
+		break;
+	}
+
+	
+
+
 	// 5秒で255に
 	// 300frmで255
 
-	counter++;
-	if (counter > 300)
-	{
-		counter = 300;
-	}
-	float opacity = counter / 300.0f * 255.0f;
-	opacity = 255.0f - opacity;
-	sprite->setOpacity(opacity);
+	//counter++;
+	//if (counter > 300)
+	//{
+	//	counter = 300;
+	//}
+	//float opacity = counter / 300.0f * 255.0f;
+	//opacity = 255.0f - opacity;
+	//sprite->setOpacity(opacity);
 }
