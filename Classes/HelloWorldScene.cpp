@@ -49,7 +49,7 @@ bool HelloWorld::init()
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
@@ -104,10 +104,11 @@ bool HelloWorld::init()
 	sprite = Sprite::create("inu.png");
 	this->addChild(sprite);
 
-	sprite->setPosition(Vec2(640.0f, 320.0f));
+	sprite->setPosition(Vec2(1280.0f-100.0f, 720.0f-100.0f));
 	//sprite->setRotation(90.0f);
 	//sprite->setVisible(false);
 	sprite->setColor(Color3B(255, 255, 255));
+	sprite->setScale(0.5f);
 	//sprite->setOpacity(255);
 
 	// update関数を有効にする
@@ -135,9 +136,9 @@ void HelloWorld::update(float delta)
 	// 今の座標を取得
 	Vec2 pos = sprite->getPosition();
 	// 座標をずらす
-	//pos += Vec2(1.0f, 1.0f);
-	pos.x += 1.0f;
-	pos.y += 1.0f;
+	pos += Vec2(-5.0f, 0.0f);
+	//pos.x -= 5.0f;
+	//pos.y += 1.0f;
 	// 新たな座標をセット
 	sprite->setPosition(pos);
 }
