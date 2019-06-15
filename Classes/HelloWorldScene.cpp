@@ -105,13 +105,13 @@ bool HelloWorld::init()
 	this->addChild(sprite);
 
 	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
-	//sprite->setRotation(180.0f);
+	//sprite->setRotation(90.0f);
 	//sprite->setVisible(false);
 	// 赤
 	//sprite->setColor(Color3B(255, 0, 0));
 	// 青
 	//sprite->setColor(Color3B(0, 0, 255));
-	sprite->setScale(3.0f);
+	sprite->setScale(6.0f);
 
 	//                           X    Y   W    H
 	sprite->setTextureRect(Rect(32, 32, 32, 32));
@@ -120,7 +120,7 @@ bool HelloWorld::init()
 
 	//sprite->setOpacity(255);
 
-	//sprite->setAnchorPoint(Vec2(1, 1));
+	sprite->setAnchorPoint(Vec2(0, 1));
 
 	// update関数を有効にする
 	this->scheduleUpdate();
@@ -129,6 +129,8 @@ bool HelloWorld::init()
 
 	// 左移動から始まる
 	state = 0;
+
+	rot = 0;
 
     return true;
 }
@@ -149,5 +151,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-
+	rot -= 1.0f;
+	sprite->setRotation(rot);
 }
