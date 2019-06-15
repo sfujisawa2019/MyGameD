@@ -120,7 +120,7 @@ bool HelloWorld::init()
 
 	//sprite->setOpacity(255);
 
-	sprite->setAnchorPoint(Vec2(0, 1));
+	//sprite->setAnchorPoint(Vec2(0, 1));
 
 	// update関数を有効にする
 	this->scheduleUpdate();
@@ -130,7 +130,9 @@ bool HelloWorld::init()
 	// 左移動から始まる
 	state = 0;
 
-	rot = 0;
+	//rot = 0;
+
+	blue = 0;
 
     return true;
 }
@@ -151,6 +153,16 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	rot -= 1.0f;
-	sprite->setRotation(rot);
+	// 180frmで255になる
+	blue += 255.0f / 180.0f;
+	// 最大値で制限をかける
+	if (blue > 255.0f)
+	{
+		blue = 255.0f;
+	}
+	// Rは255～0  Bは0～255で変化
+	sprite->setColor(Color3B(255-blue, 0, blue));
+
+	//rot -= 1.0f;
+	//sprite->setRotation(rot);
 }
