@@ -101,20 +101,24 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	sprite = Sprite::create("sample08.png");
+	sprite = Sprite::create("inu.png");
 	this->addChild(sprite);
-
 	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
+	
+	sprite2 = Sprite::create("wolf.jpg");
+	this->addChild(sprite2);
+	sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	
 	//sprite->setRotation(90.0f);
 	//sprite->setVisible(false);
 	// 赤
 	//sprite->setColor(Color3B(255, 0, 0));
 	// 青
 	//sprite->setColor(Color3B(0, 0, 255));
-	sprite->setScale(6.0f);
+	//sprite->setScale(6.0f);
 
 	//                           X    Y   W    H
-	sprite->setTextureRect(Rect(32, 32, 32, 32));
+	//sprite->setTextureRect(Rect(32, 32, 32, 32));
 
 	//sprite->setFlippedX(true);
 
@@ -133,6 +137,8 @@ bool HelloWorld::init()
 	//rot = 0;
 
 	blue = 0;
+
+	opacity = 0;
 
     return true;
 }
@@ -153,15 +159,26 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	// 180frmで255になる
-	blue += 255.0f / 180.0f;
-	// 最大値で制限をかける
-	if (blue > 255.0f)
+	// 不透明度が徐々に上がる
+	opacity += 1.0f;
+	// 上限で止める
+	if (opacity > 255.0f)
 	{
-		blue = 255.0f;
+		opacity = 255.0f;
 	}
-	// Rは255～0  Bは0～255で変化
-	sprite->setColor(Color3B(255-blue, 0, blue));
+	// 不透明度をセット
+	sprite->setOpacity(255 - opacity);
+	sprite2->setOpacity(opacity);
+
+	//// 180frmで255になる
+	//blue += 255.0f / 180.0f;
+	//// 最大値で制限をかける
+	//if (blue > 255.0f)
+	//{
+	//	blue = 255.0f;
+	//}
+	//// Rは255～0  Bは0～255で変化
+	//sprite->setColor(Color3B(255-blue, 0, blue));
 
 	//rot -= 1.0f;
 	//sprite->setRotation(rot);
