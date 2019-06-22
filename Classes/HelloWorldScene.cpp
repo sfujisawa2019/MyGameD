@@ -101,13 +101,15 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	sprite = Sprite::create("inu.png");
-	this->addChild(sprite);
-	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
-	
-	sprite2 = Sprite::create("wolf.jpg");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
+
+	//sprite = Sprite::create("inu.png");
+	//this->addChild(sprite);
+	//sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
+	//
+	//sprite2 = Sprite::create("wolf.jpg");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	
 	//sprite->setRotation(90.0f);
 	//sprite->setVisible(false);
@@ -129,17 +131,6 @@ bool HelloWorld::init()
 	// update関数を有効にする
 	this->scheduleUpdate();
 
-	counter = 0;
-
-	// 左移動から始まる
-	state = 0;
-
-	//rot = 0;
-
-	blue = 0;
-
-	opacity = 0;
-
     return true;
 }
 
@@ -159,27 +150,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	// 不透明度が徐々に上がる
-	opacity += 1.0f;
-	// 上限で止める
-	if (opacity > 255.0f)
-	{
-		opacity = 255.0f;
-	}
-	// 不透明度をセット
-	sprite->setOpacity(255 - opacity);
-	sprite2->setOpacity(opacity);
 
-	//// 180frmで255になる
-	//blue += 255.0f / 180.0f;
-	//// 最大値で制限をかける
-	//if (blue > 255.0f)
-	//{
-	//	blue = 255.0f;
-	//}
-	//// Rは255～0  Bは0～255で変化
-	//sprite->setColor(Color3B(255-blue, 0, blue));
-
-	//rot -= 1.0f;
-	//sprite->setRotation(rot);
 }
