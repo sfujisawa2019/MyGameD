@@ -105,42 +105,34 @@ bool HelloWorld::init()
 	// Random r = new Random();
 	srand(time(nullptr));
 
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	sprite[i] = Sprite::create("inu.png");
-	//	this->addChild(sprite[i]);
-	//	sprite[i]->setPosition(Vec2(300 + 100*i, visibleSize.height / 2.0f));
-	//	sprite[i]->setScale(0.2f);
+	for (int i = 0; i < 10; i++)
+	{
+		sprite[i] = Sprite::create("inu.png");
+		this->addChild(sprite[i]);
+		sprite[i]->setPosition(Vec2(100 * i, visibleSize.height/2.0f));
+		sprite[i]->setScale(0.1f);
 
-	//	float mx, my;
-	//	// -250～+250の乱数
-	//	mx = (float)rand()/RAND_MAX * 500 - 250;
-	//	my = (float)rand()/RAND_MAX * 500 - 250;
-	//	MoveBy* action1 = MoveBy::create(1.0f, Vec2(mx, my));
-	//	sprite[i]->runAction(action1);
+		JumpBy* action1 = JumpBy::create(1.0f, Vec2(300,0), 300, 1);
+		sprite[i]->runAction(action1);
+	}
 
-	//	sprite[i]->setOpacity(0);
-	//	FadeIn* action2 = FadeIn::create(1.0f);
-	//	sprite[i]->runAction(action2);
-	//}
+	/////sprite/////////////////
+	//sprite = Sprite::create("inu.png");
+	//this->addChild(sprite);
+	//sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	//sprite->setScale(0.1f);
 
-	///sprite/////////////////
-	sprite = Sprite::create("inu.png");
-	this->addChild(sprite);
-	sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	sprite->setScale(0.1f);
+	////////////////////sprite2
+	//sprite2 = Sprite::create("wolf.jpg");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(300, 300));
+	//sprite2->setScale(0.1f);
 
-	//////////////////sprite2
-	sprite2 = Sprite::create("wolf.jpg");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(300, 300));
-	sprite2->setScale(0.1f);
-
-	//////////////////action1
-	JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
-	sprite->runAction(action1->clone());
-	sprite2->runAction(action1->clone());
-	////////////////////////
+	////////////////////action1
+	//JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
+	//sprite->runAction(action1->clone());
+	//sprite2->runAction(action1->clone());
+	//////////////////////////
 
 	//EaseInOut* action2 = EaseInOut::create(action1, 2.0f);
 	//MoveTo* action1 = MoveTo::create(1.0f, Vec2(200, 100));
