@@ -105,15 +105,17 @@ bool HelloWorld::init()
 	this->addChild(sprite);
 	sprite->setPosition(Vec2(300, visibleSize.height/2.0f));
 
-	MoveBy* action1 = MoveBy::create(1.0f, Vec2(300, 200));
-	sprite->runAction(action1);
 	///sprite2////////////////
 	sprite2 = Sprite::create("wolf.jpg");
 	this->addChild(sprite2);
 	sprite2->setPosition(Vec2(900, visibleSize.height / 2.0f));
 
-	MoveBy* action2 = MoveBy::create(1.0f, Vec2(300, 200));
-	sprite2->runAction(action2);
+	///action1
+	MoveBy* action1 = MoveBy::create(1.0f, Vec2(300, 200));
+	sprite->runAction(action1->clone());
+	sprite2->runAction(action1->clone());
+	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(300, 200));
+	//sprite2->runAction(action2);
 	//////////////////////////
 
 	//EaseInOut* action2 = EaseInOut::create(action1, 2.0f);
