@@ -100,20 +100,32 @@ bool HelloWorld::init()
         // add the label as a child to this layer
         this->addChild(label, 1);
     }
-	///sprite/////////////////
-	sprite = Sprite::create("inu.png");
-	this->addChild(sprite);
-	sprite->setPosition(Vec2(300, visibleSize.height/2.0f));
 
-	///sprite2////////////////
-	sprite2 = Sprite::create("wolf.jpg");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(900, visibleSize.height / 2.0f));
+	for (int i = 0; i < 5; i++)
+	{
+		sprite[i] = Sprite::create("inu.png");
+		this->addChild(sprite[i]);
+		sprite[i]->setPosition(Vec2(300 + 100*i, visibleSize.height / 2.0f));
+		sprite[i]->setScale(0.2f);
 
-	///action1
-	MoveBy* action1 = MoveBy::create(1.0f, Vec2(300, 200));
-	sprite->runAction(action1->clone());
-	sprite2->runAction(action1->clone());
+		MoveBy* action1 = MoveBy::create(1.0f, Vec2(300, 200));
+		sprite[i]->runAction(action1);
+	}
+
+	/////sprite/////////////////
+	//sprite = Sprite::create("inu.png");
+	//this->addChild(sprite);
+	//sprite->setPosition(Vec2(300, visibleSize.height/2.0f));
+
+	/////sprite2////////////////
+	//sprite2 = Sprite::create("wolf.jpg");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(900, visibleSize.height / 2.0f));
+
+	/////action1
+	//MoveBy* action1 = MoveBy::create(1.0f, Vec2(300, 200));
+	//sprite->runAction(action1->clone());
+	//sprite2->runAction(action1->clone());
 	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(300, 200));
 	//sprite2->runAction(action2);
 	//////////////////////////
