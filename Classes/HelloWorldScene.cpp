@@ -101,12 +101,22 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
+	sprite = Sprite::create("inu.png");
+	this->addChild(sprite);
+	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
 
+	//MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
+	//MoveTo* action1 = MoveTo::create(1.0f, Vec2(200, 100));
+	//ScaleTo* action1 = ScaleTo::create(1.0f, 5.0f);
+	//JumpTo* action1 = JumpTo::create(1.0f, Vec2(200, 100), 300.0f, 2);
+	ccBezierConfig conf;
+	conf.controlPoint_1 = Vec2(200, 200);
+	conf.controlPoint_2 = Vec2(500, 500);
+	conf.endPosition = Vec2(800, 200);
+	BezierTo* action1 = BezierTo::create(2.0f, conf);
+	sprite->runAction(action1);
 
-	//sprite = Sprite::create("inu.png");
-	//this->addChild(sprite);
-	//sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
-	//
+	
 	//sprite2 = Sprite::create("wolf.jpg");
 	//this->addChild(sprite2);
 	//sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
