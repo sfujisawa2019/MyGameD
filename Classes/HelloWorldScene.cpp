@@ -115,7 +115,9 @@ bool HelloWorld::init()
 	//// 連続アクションの生成
 	Sequence* action3 = Sequence::create(action1, action2, nullptr);
 	// 繰り返しアクションの生成
-	Repeat* action4 = Repeat::create(action3, 10);
+	//Repeat* action4 = Repeat::create(action3, 10);
+	// 無限繰り返しアクション
+	RepeatForever* action4 = RepeatForever::create(action3);
 	// アクションの実行
 	spr->runAction(action4);
 
