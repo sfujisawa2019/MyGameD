@@ -107,17 +107,13 @@ bool HelloWorld::init()
 	// 移動アクションの生成
 	MoveBy* action1 = MoveBy::create(1.0f, Vec2(100.0f, 100.0f));
 	//// ジャンプアクションの生成
-	JumpTo* action2 = JumpTo::create(1.0f, Vec2(200.0f, 200.0f), 300.0f, 2);
-	//// 色変えアクションの生成
-	//TintTo* action3 = TintTo::create(2.0f, Color3B(255, 255, 0));
-	//// 同時アクション（ジャンプ、色変え）の生成
-	//Spawn* action4 = Spawn::create(action2, action3, nullptr);
-	//// 連続アクションの生成
-	Sequence* action3 = Sequence::create(action1, action2, nullptr);
-	// 繰り返しアクションの生成
-	//Repeat* action4 = Repeat::create(action3, 10);
+	JumpBy* action2 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100.0f, 1);
+	//// 繰り返しアクション
+	//Repeat* action3 = Repeat::create(action2, 2147483647);
 	// 無限繰り返しアクション
-	RepeatForever* action4 = RepeatForever::create(action3);
+	RepeatForever* action3 = RepeatForever::create(action2);
+	//// 連続アクションの生成
+	Sequence* action4 = Sequence::create(action1, action3, nullptr);
 	// アクションの実行
 	spr->runAction(action4);
 
