@@ -104,18 +104,14 @@ bool HelloWorld::init()
 	// Spriteの生成
 	Sprite* spr = Sprite::create("inu.png");
 	this->addChild(spr);
+	// 指定秒数待機するアクションの生成
+	DelayTime* action1 = DelayTime::create(1.0f);
 	// 移動アクションの生成
-	MoveBy* action1 = MoveBy::create(1.0f, Vec2(100.0f, 100.0f));
-	//// ジャンプアクションの生成
-	JumpBy* action2 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100.0f, 1);
-	//// 繰り返しアクション
-	//Repeat* action3 = Repeat::create(action2, 2147483647);
-	// 無限繰り返しアクション
-	RepeatForever* action3 = RepeatForever::create(action2);
-	//// 連続アクションの生成
-	Sequence* action4 = Sequence::create(action1, action3, nullptr);
+	MoveBy* action2 = MoveBy::create(1.0f, Vec2(100.0f, 100.0f));
+
+	Sequence* action3 = Sequence::create(action1, action2, nullptr);
 	// アクションの実行
-	spr->runAction(action4);
+	spr->runAction(action3);
 
 	// update関数を有効にする
 	this->scheduleUpdate();
