@@ -106,14 +106,16 @@ bool HelloWorld::init()
 	this->addChild(spr);
 	// 移動アクションの生成
 	MoveTo* action1 = MoveTo::create(2.0f, Vec2(600.0f, 300.0f));
-	// ジャンプアクションの生成
+	//// ジャンプアクションの生成
 	JumpTo* action2 = JumpTo::create(1.0f, Vec2(200.0f, 200.0f), 300.0f, 2);
 	// 色変えアクションの生成
-	TintTo* action3 = TintTo::create(1.0f, Color3B(255, 255, 0));
-	// 連続アクション（移動→ジャンプ）の生成
-	Sequence* action4 = Sequence::create(action1, action2, action3, action1->clone(), nullptr);
+	TintTo* action3 = TintTo::create(2.0f, Color3B(255, 255, 0));
+	// 同時アクション（ジャンプ、色変え）の生成
+	Spawn* action4 = Spawn::create(action2, action3, nullptr);
+	// 連続アクションの生成
+	Sequence* action5 = Sequence::create(action1, action4, nullptr);
 	// アクションの実行
-	spr->runAction(action4);
+	spr->runAction(action5);
 
 	// update関数を有効にする
 	this->scheduleUpdate();
