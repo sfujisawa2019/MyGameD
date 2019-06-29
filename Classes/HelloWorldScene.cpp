@@ -104,12 +104,11 @@ bool HelloWorld::init()
 	// Spriteの生成
 	Sprite* spr = Sprite::create("inu.png");
 	this->addChild(spr);
-	//spr->setVisible(false);
+	//spr->removeFromParent();
 	// 指定秒数待機するアクションの生成
 	DelayTime* action1 = DelayTime::create(1.0f);
-	Hide* action2 = Hide::create();
-	//// 移動アクションの生成
-	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(100.0f, 100.0f));
+	// 自分を削除（解放）するアクションの生成
+	RemoveSelf* action2 = RemoveSelf::create();
 
 	Sequence* action3 = Sequence::create(action1, action2, nullptr);
 	// アクションの実行
