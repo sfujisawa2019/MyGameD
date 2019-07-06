@@ -24,8 +24,10 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
+//using namespace experimental;
 
 Scene* HelloWorld::createScene()
 {
@@ -101,36 +103,8 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	// テクスチャの読み込み
-	Texture2D* texture = Director::getInstance()->getTextureCache()->addImage("sample08.png");
-
-	// テクスチャからアニメーションパターンを指定する
-	SpriteFrame* frame0 = SpriteFrame::createWithTexture(texture, Rect(32 * 0, 32 * 2, 32, 32));
-	SpriteFrame* frame1 = SpriteFrame::createWithTexture(texture, Rect(32 * 1, 32 * 2, 32, 32));
-	SpriteFrame* frame2 = SpriteFrame::createWithTexture(texture, Rect(32 * 2, 32 * 2, 32, 32));
-	SpriteFrame* frame3 = SpriteFrame::createWithTexture(texture, Rect(32 * 1, 32 * 2, 32, 32));
-
-	// 全てのアニメーションパターンをまとめる
-	Vector<SpriteFrame*> animFrames(4);
-	animFrames.pushBack(frame0);
-	animFrames.pushBack(frame1);
-	animFrames.pushBack(frame2);
-	animFrames.pushBack(frame3);
-
-	// アニメーションパターンからSpriteを生成
-	Sprite* sprite = Sprite::createWithSpriteFrame(frame0);
-	sprite->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	sprite->setScale(10.0f);	// 拡大
-	this->addChild(sprite);
-
-	// 一コマ分の時間を指定してアニメーションデータを生成
-	Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.2f);
-	// アニメーションデータからアニメーションアクションを生成
-	Animate* animate = Animate::create(animation);
-	// 指定回数繰り返すアクションを生成
-	Repeat* repeat = Repeat::create(animate, 5);
-	// アクションの実行
-	sprite->runAction(repeat);
+	// サウンド再生
+	audioID = experimental::AudioEngine::play2d("testbgm.mp3", true, 0.5f);
 
 	// update関数を有効にする
 	this->scheduleUpdate();
@@ -154,5 +128,16 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-
+	counter--;
+	if (counter == 60)
+	{
+		experimental::AudioEngine::pause(audioID);
+		//experimental::AudioEngine::stop(audioID);
+		//experimental::AudioEngine::stopAll();
+		//experimental::AudioEngine::play2d("test.mp3");
+	}
+	if (counter == 0)
+	{
+		experimental::AudioEngine::resume(audioID);
+	}
 }

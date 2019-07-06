@@ -41,6 +41,11 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+	// オーディオID
+	int audioID;
+
+	int counter = 150;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
