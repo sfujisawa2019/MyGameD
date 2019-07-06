@@ -35,6 +35,8 @@ public:
     virtual bool init();
 
 	void update(float delta) override;
+
+	void myFunction();
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
@@ -45,7 +47,7 @@ public:
 	// オーディオID
 	int audioID;
 
-	int counter = 150;
+	//int counter = 150;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
