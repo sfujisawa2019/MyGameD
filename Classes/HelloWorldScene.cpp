@@ -125,3 +125,23 @@ void HelloWorld::myFunction3()
 	this->runAction(seq);
 }
 
+bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
+{
+
+	return true;
+}
+
+void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
+{
+
+}
+
+void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
+{
+
+}
+
+void HelloWorld::onTouchCancelled(Touch* touch, Event* unused_event)
+{
+
+}
