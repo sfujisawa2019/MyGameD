@@ -53,6 +53,8 @@ public:
 	// オーディオID
 	int audioID;
 
+	cocos2d::Sprite* spr;
+
 	//int counter = 150;
 };
 
