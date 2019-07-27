@@ -157,15 +157,13 @@ void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 	Vec2 touch_pos = touch->getLocation();
 
 	spr->setPosition(touch_pos);
-
-	//// スプライトを削除
-	//spr->removeFromParent();
 }
 
 // タッチを離した時に呼ばれる関数
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
 {
-	
+	// スプライトを削除
+	spr->removeFromParent();
 }
 
 // タッチがキャンセルされた時に呼ばれる関数
