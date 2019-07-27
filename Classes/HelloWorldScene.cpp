@@ -140,9 +140,9 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 	Vec2 touch_pos = touch->getLocation();
 
 	// スプライトの生成
-	spr = Sprite::create("CloseNormal.png");
-	this->addChild(spr);
-	spr->setPosition(touch_pos);
+	streak = MotionStreak::create(0.5f, 1.0f, 200.0f, Color3B(255,255,255), "inu.png");
+	this->addChild(streak);
+	streak->setPosition(touch_pos);
 
 	//                                ファイル名
 	experimental::AudioEngine::play2d("test.mp3");
@@ -156,14 +156,14 @@ void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 	// タッチ座標の取得
 	Vec2 touch_pos = touch->getLocation();
 
-	spr->setPosition(touch_pos);
+	streak->setPosition(touch_pos);
 }
 
 // タッチを離した時に呼ばれる関数
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
 {
 	// スプライトを削除
-	spr->removeFromParent();
+	streak->removeFromParent();
 }
 
 // タッチがキャンセルされた時に呼ばれる関数
