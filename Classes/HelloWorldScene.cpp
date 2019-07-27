@@ -136,6 +136,8 @@ void HelloWorld::myFunction3()
 // タッチ開始時に呼ばれる関数
 bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 {
+	//                                ファイル名
+	experimental::AudioEngine::play2d("test.mp3");
 
 	return true;
 }
